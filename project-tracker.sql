@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.12 (Ubuntu 13.12-1.pgdg22.04+1)
--- Dumped by pg_dump version 13.12 (Ubuntu 13.12-1.pgdg22.04+1)
+-- Dumped from database version 13.3
+-- Dumped by pg_dump version 13.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: grades; Type: TABLE; Schema: public; Owner: franschipits
+-- Name: grades; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.grades (
@@ -32,10 +32,8 @@ CREATE TABLE public.grades (
 );
 
 
-ALTER TABLE public.grades OWNER TO franschipits;
-
 --
--- Name: grades_id_seq; Type: SEQUENCE; Schema: public; Owner: franschipits
+-- Name: grades_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.grades_id_seq
@@ -46,31 +44,27 @@ CREATE SEQUENCE public.grades_id_seq
     NO MAXVALUE
     CACHE 1;
 
- 
-ALTER TABLE public.grades_id_seq OWNER TO franschipits;
 
 --
--- Name: grades_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: franschipits
+-- Name: grades_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.grades_id_seq OWNED BY public.grades.id;
 
 
 --
--- Name: projects; Type: TABLE; Schema: public; Owner: franschipits
+-- Name: projects; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.projects (
-    title character varying(50) NOT NULL,
+    title character varying(30) NOT NULL,
     description text,
     max_grade integer
 );
 
 
-ALTER TABLE public.projects OWNER TO franschipits;
-
 --
--- Name: students; Type: TABLE; Schema: public; Owner: franschipits
+-- Name: students; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.students (
@@ -80,42 +74,37 @@ CREATE TABLE public.students (
 );
 
 
-ALTER TABLE public.students OWNER TO franschipits;
-
 --
--- Name: grades id; Type: DEFAULT; Schema: public; Owner: franschipits
+-- Name: grades id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.grades ALTER COLUMN id SET DEFAULT nextval('public.grades_id_seq'::regclass);
 
 
 --
--- Data for Name: grades; Type: TABLE DATA; Schema: public; Owner: franschipits
+-- Data for Name: grades; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.grades (id, student_github, project_title, grade) FROM stdin;
-1	jhacks	markov	10
-2	jhacks	blockly	2
-3	sdevelops	markov	50
-4	sdevelops	blockly	100
+1	jhacks	Markov	10
+2	jhacks	Blockly	2
+3	sdevelops	Markov	50
+4	sdevelops	Blockly	100
 \.
 
 
 --
--- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: franschipits
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.projects (title, description, max_grade) FROM stdin;
-markov	tweets generated from markov chains	50
-blockly	programmatic logic puzzle game	100
-guessing game	guess a random number	13
-bashcrawl	explore a dungeon while practicing shell commands	20
-list slicing	learn how to slice lists in python	44
+Markov	Tweets generated from Markov chains	50
+Blockly	Programmatic Logic Puzzle Game	100
 \.
 
 
 --
--- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: franschipits
+-- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.students (github, first_name, last_name) FROM stdin;
@@ -125,14 +114,14 @@ sdevelops	Sarah	Developer
 
 
 --
--- Name: grades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: franschipits
+-- Name: grades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.grades_id_seq', 4, true);
+SELECT pg_catalog.setval('public.grades_id_seq', 5, true);
 
 
 --
--- Name: grades grades_pkey; Type: CONSTRAINT; Schema: public; Owner: franschipits
+-- Name: grades grades_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.grades
@@ -140,7 +129,7 @@ ALTER TABLE ONLY public.grades
 
 
 --
--- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: franschipits
+-- Name: projects projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.projects
@@ -148,7 +137,7 @@ ALTER TABLE ONLY public.projects
 
 
 --
--- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: franschipits
+-- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.students
@@ -156,7 +145,7 @@ ALTER TABLE ONLY public.students
 
 
 --
--- Name: grades grades_project_title_fkey; Type: FK CONSTRAINT; Schema: public; Owner: franschipits
+-- Name: grades grades_project_title_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.grades
@@ -164,7 +153,7 @@ ALTER TABLE ONLY public.grades
 
 
 --
--- Name: grades grades_student_github_fkey; Type: FK CONSTRAINT; Schema: public; Owner: franschipits
+-- Name: grades grades_student_github_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.grades
